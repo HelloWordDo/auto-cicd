@@ -1,0 +1,3 @@
+auto-cicd 2021-07-19 15:41:55.116 [restartedMain] - traceId:[] INFO  com.arkmon.autocicd.AutoCicdApplication:55 - Starting AutoCicdApplication using Java 1.8.0_241 on dazhiruosha-2.local with PID 81321 (/Users/dce2fhq/Mobility Asia/auto_cicd/target/classes started by dce2fhq in /Users/dce2fhq/Mobility Asia/auto_cicd)
+auto-cicd 2021-07-19 15:41:55.119 [restartedMain] - traceId:[] INFO  com.arkmon.autocicd.AutoCicdApplication:660 - No active profile set, falling back to default profiles: default
+auto-cicd 2021-07-19 15:41:59.747 [restartedMain] - traceId:[] INFO  com.arkmon.autocicd.AutoCicdApplication:61 - Started AutoCicdApplication in 5.161 seconds (JVM running for 6.18)

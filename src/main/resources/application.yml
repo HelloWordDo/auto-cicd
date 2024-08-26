@@ -1,0 +1,65 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 10
+  port: 10099
+
+spring:
+  application:
+    name: auto-cicd
+  servlet:
+    multipart:
+      max-file-size: 10485760
+      max-request-size: 10485760
+  datasource:
+    url: jdbc:mysql://192.168.30.62:3306/auto_cicd?characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: xj
+    password: xuju5220
+    hikari:
+      idle-timeout: 180000   # minimum-idle以外的空闲连接存活时间
+      max-lifetime: 800000 # MA ELB超时时间是900s，max-lifetime默认是30分钟，需要设置成<900s，这里设置成800s by xj
+      connection-timeout: 5000 # 连接数据库最大时间
+      minimum-idle: 10 #最小连接个数
+      maximum-pool-size: 100 #最大连接个数
+      connection-test-query: SELECT 1                 #用来检测连接是否有效的sql
+
+#  redis:
+#    timeout: 3000
+#    password: VUb7y4fAnKunAOp9
+#    lettuce:
+#      pool:
+#        max-active: 500
+#        max-wait: 3000
+#        max-idle: 8
+#        min-idle: 0
+#    database: 0
+#    host: 10.38.51.54
+#    port: 6383
+
+#mybatis-plus配置
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
+  global-config:
+    db-config:
+      field-strategy: not_null
+
+custom:
+  minio:
+    url: http://192.168.30.62:10097
+    accessKey: admin
+    secretKey: xxjj1122
+    bucket: autocicd
+  jenkins:
+    url: jenkins.maezia.com
+    user: xujun
+    token: 111e0017741e7eebb095925d2ba8700d07
+  yapi:
+    url: http://192.168.30.62:30000/api/open/run_auto_test?id=%s&token=%s&env_%s=%s&mode=json&email=false&download=false
+  dingTalk:
+    webHookToken: https://oapi.dingtalk.com/robot/send?access_token=515db31537690483d1e177df33863e8fb8ee64ce80df2e361fdc7c195302d16d
+    atAll: false
